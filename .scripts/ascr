@@ -1,0 +1,3 @@
+touch ~/.nix-profile/bin/$1
+vi ~/.nix-profile/bin/$1
+chmod 777 ~/.nix-profile/bin/$1

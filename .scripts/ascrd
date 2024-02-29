@@ -1,0 +1,1 @@
+rm ~/.nix-profile/bin/$1
