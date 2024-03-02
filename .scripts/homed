@@ -1,1 +1,1 @@
-sudo nvim ~/.nixos-configuration/talkingfoxmid-home.nix
+nvim ~/.nixos-configuration/talkingfoxmid-home.nix

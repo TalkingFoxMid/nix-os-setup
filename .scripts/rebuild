@@ -1,2 +1,4 @@
+sudo rm -R /etc/nixos/
+sudo mkdir /etc/nixos
 sudo cp -R ~/.nixos-configuration/* /etc/nixos/
 sudo nixos-rebuild switch

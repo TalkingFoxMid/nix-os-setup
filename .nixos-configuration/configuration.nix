@@ -84,7 +84,6 @@
   environment.pathsToLink = ["libexec"];
   nixpkgs.config.zathura.useMupdf = true;
   environment.systemPackages = with pkgs; [
-    neovim
     kubectl
     python3
     youtube-dl

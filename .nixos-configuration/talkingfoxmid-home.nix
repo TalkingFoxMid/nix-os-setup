@@ -3,6 +3,10 @@
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
+
+  imports = [
+  ];
+
   home.username = "talkingfoxmid";
   home.homeDirectory = "/home/talkingfoxmid";
   home.sessionPath = [
@@ -24,6 +28,7 @@
     fuzzel
     neofetch
     btop
+    hyprpaper
 
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
@@ -81,6 +86,14 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   
+  programs.neovim = {
+    enable = true;
+    extraConfig = 
+    ''
+    set shiftwidth=2
+    '';
+  };
+
   programs.zsh = {
   enable = true;
   initExtra = "neofetch";
@@ -88,5 +101,48 @@
     ll = "ls -l";
     update = "sudo nixos-rebuild switch";
   };
+  };
+
+  programs.waybar = {
+    enable = true;
+
+    settings = {
+      mainBar = {
+        position = "bottom";
+        monitor = "eDP-1";
+        height = 25;
+        modules-left = [
+          "hyprland/workspaces"
+          "river/tags"
+          "sway/workspaces"
+          "tray"
+        ];
+	modules-right = [
+            "privacy"
+            "network"
+            "custom/wireguard"
+            "custom/teavpn"
+            "pulseaudio"
+            "battery"
+            "custom/date"
+            "clock"
+          ];
+	"privacy" = {
+	  "icon-spacing" = 4;
+	  "icon-size" = 18;
+	  "transition-duration" = 250;
+	};
+	"pulseaudio" = {
+	  "format" = "{icon}{volume}%";
+	  "format-muted" = "󰖁";
+	  "on-click" = "amixer -q set Master toggle-mute";
+	  "format-icons" = [
+	    "󰕿"
+	    "󰖀"
+	    "󰕾"
+	  ];
+	};
+      };
+    };
   };
 }
