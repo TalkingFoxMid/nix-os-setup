@@ -7,7 +7,10 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./hyprland.nix
+      ./display-manager.nix
     ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
   virtualisation.docker.enable = true;
   virtualisation.docker.rootless = {
     enable = true;
@@ -58,30 +61,9 @@
   nixpkgs.config.permittedInsecurePackages = ["electron-25.9.0"];
   hardware.pulseaudio.extraConfig = "load-module module-combine-sink";
   # Configure keymap in X11
-  services.xserver = {
-    layout = "us,ru";
-    xkbOptions = "eurosign:e, compose:menu, grp:alt_space_toggle";
-    enable = true;
-    exportConfiguration = true;
-    desktopManager = {
-      xterm.enable = false;
-    };
-    displayManager = {
-      defaultSession = "none+i3";
-    };
-    windowManager.i3 = {
-      enable = true;
-      extraPackages = with pkgs; [
-        dmenu
-        i3status
-        i3lock
-        i3blocks
-      ];
-    };
-  };
 
-  programs.zsh.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  programs.zsh.enable = true;
   users.users.talkingfoxmid = {
     isNormalUser = true;
     shell = pkgs.zsh;
