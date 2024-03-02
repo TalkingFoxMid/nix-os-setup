@@ -24,4 +24,4 @@ key_bindings:
   - { key: C, mods: Control, action: Copy }
 
 shell:
-  program: /home/talkingfoxmid/.nix-profile/bin/zsh
+  program: /etc/profiles/per-user/talkingfoxmid/bin/zsh
