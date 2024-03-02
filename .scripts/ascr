@@ -1,3 +1,3 @@
 touch ~/.scripts/$1
-vi ~/.scripts/$1
+nvim ~/.scripts/$1
 chmod 777 ~/.scripts/$1
