@@ -1,4 +1,10 @@
-sudo rm -R /etc/nixos/
-sudo mkdir /etc/nixos
+sudo rm -r /etc/nixos/core
+sudo mkdir /etc/nixos/core
+
+sudo rm -r /etc/nixos/home-manager
+sudo mkdir /etc/nixos/home-manager
+
+sudo rm /etc/nixos/flake.nix
+
 sudo cp -R ~/.nixos-configuration/* /etc/nixos/
 sudo nixos-rebuild switch
