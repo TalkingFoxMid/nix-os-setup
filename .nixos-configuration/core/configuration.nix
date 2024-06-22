@@ -10,7 +10,7 @@
       ./display-manager.nix
       ./bluetooth.nix
       ./wireguard.nix
-      ./hyprland.nix
+      ./wm.nix
     ];
 
   systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
