@@ -7,12 +7,35 @@
   imports =
     [ # Include the results of the hardware scan.
       ../machine/hardware-configuration.nix
-      ./hyprland.nix
       ./display-manager.nix
       ./bluetooth.nix
       ./wireguard.nix
+      ./hyprland.nix
     ];
 
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
+
+  systemd = {
+  user.services.polkit-kde-agent-1 = {
+    enable = true;
+    description = "polkit-kde-agent-1";
+    wantedBy = [ "graphical-session.target" ];
+    wants = [ "graphical-session.target" ];
+    after = [ "graphical-session.target" ];
+    serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimeoutStopSec = 10;
+      };
+    };
+  };
+
+
+  security.polkit.enable = true;
+  
   nixpkgs.overlays = [
     (final: prev: {
       obsidian-wayland = prev.obsidian.override {electron = final.electron_24;};
@@ -94,6 +117,8 @@
   environment.pathsToLink = ["libexec"];
   nixpkgs.config.zathura.useMupdf = true;
   environment.systemPackages = with pkgs; [
+    polkit-kde-agent
+    wl-clipboard 
     bind
     flameshot
     gcc-unwrapped
