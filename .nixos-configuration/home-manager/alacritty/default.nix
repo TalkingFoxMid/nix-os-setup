@@ -16,7 +16,6 @@
 	opacity = 0.75;
       };
       font = {
-	family = "Monaco";
 	size = 14.0;
       };
       colors = {

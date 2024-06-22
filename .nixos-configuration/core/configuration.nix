@@ -13,6 +13,7 @@
       ./hyprland.nix
     ];
 
+  systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   environment.sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
 
@@ -110,7 +111,6 @@
 	programs.gnupg.agent = {                                                      
 	  enable = true;
 	  enableSSHSupport = true;
-	  pinentryFlavor = "qt";
 	};
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -138,7 +138,6 @@
     gnupg
     discord
     pkgs.jdk
-    pkgs.jetbrains.idea-community
     pavucontrol
     rxvt-unicode
     pkgs.chromium
