@@ -1,3 +1,5 @@
+./rebuild_specific
+
 sudo rm -r /etc/nixos/core
 sudo mkdir /etc/nixos/core
 

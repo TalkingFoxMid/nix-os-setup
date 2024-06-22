@@ -1,0 +1,6 @@
+cp ~/.config/hypr/_hyprland.conf ~/.config/hypr/hyprland.conf
+echo "workspace = 1, monitor:DP-1" >> ~/.config/hypr/hyprland.conf
+echo "workspace = 2, monitor:DP-1" >> ~/.config/hypr/hyprland.conf
+echo "workspace = 3, monitor:DP-1" >> ~/.config/hypr/hyprland.conf
+echo "workspace = 4, monitor:DP-1" >> ~/.config/hypr/hyprland.conf
+echo "workspace = 5, monitor:DP-1" >> ~/.config/hypr/hyprland.conf
