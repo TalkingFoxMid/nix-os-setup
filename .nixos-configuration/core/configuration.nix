@@ -7,10 +7,8 @@
   imports =
     [ # Include the results of the hardware scan.
       ../machine/hardware-configuration.nix
-      ./display-manager.nix
       ./bluetooth.nix
       ./wireguard.nix
-      ./wm.nix
     ];
 
   systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
